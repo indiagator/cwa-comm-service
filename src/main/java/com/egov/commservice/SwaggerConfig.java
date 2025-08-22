@@ -1,4 +1,4 @@
-package com.egov.profileservice;
+package com.egov.commservice;
 
 
 import io.swagger.v3.oas.models.OpenAPI;

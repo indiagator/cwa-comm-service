@@ -1,4 +1,4 @@
-package com.egov.profileservice;
+package com.egov.commservice;
 
 import lombok.Getter;
 import lombok.Setter;

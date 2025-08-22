@@ -1,4 +1,4 @@
-package com.egov.profileservice;
+package com.egov.commservice;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -14,19 +14,19 @@ import java.util.UUID;
 public class Producer
 {
     private static final Logger logger = LoggerFactory.getLogger(Producer.class);
-    private static final String TOPIC = "social-events";
+    private static final String TOPIC = "communication";
 
     @Autowired //DEPENDENCY INJECTION PROMISE FULFILLED AT RUNTIME
     private KafkaTemplate<String, String> kafkaTemplate ;
 
-    public void pubSocialEvent_1(String type, UUID userid) throws JsonProcessingException // LOGIN | REGISTER
+    public void pubCommMessage(CommMessage commMessage) throws JsonProcessingException // LOGIN | REGISTER
     {
         // convert to JSON
         ObjectMapper objectMapper = new ObjectMapper();
-        //String datum =  objectMapper.writeValueAsString(socialEvent1);
+        String datum =  objectMapper.writeValueAsString(commMessage);
 
        // logger.info(String.format("#### -> Producing message -> %s", datum));
-        this.kafkaTemplate.send(TOPIC,"social-key-1", "datum");
+        this.kafkaTemplate.send(TOPIC,"message-1", datum);
     }
 
 }
